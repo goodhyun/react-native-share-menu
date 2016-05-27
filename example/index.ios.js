@@ -21,10 +21,9 @@ class ExampleApp extends Component {
     };
   }
   componentWillMount() {
-    var that = this;
     NativeModules.ShareMenuModule.getSharedText((text :string) => {
       if (text && text.length) {
-        that.setState({ sharedText: text });
+        this.setState({ sharedText: text });
 
       }
     })
