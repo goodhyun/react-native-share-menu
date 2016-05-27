@@ -19,6 +19,11 @@ RCT_EXPORT_METHOD(getSharedText:(RCTResponseSenderBlock)callback)
     [ShareMenuModule_itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeURL options:nil completionHandler:^(NSURL *url, NSError *error) {
       callback(@[url.absoluteString]);
     }];
+  } else if ([ShareMenuModule_itemProvider hasItemConformingToTypeIdentifier:(NSString *)kUTTypeText]) {
+    [ShareMenuModule_itemProvider loadItemForTypeIdentifier:(NSString *)kUTTypeText options:nil completionHandler:^(NSString *text, NSError *error) {
+//      NSLog(@"text is :%@",text);
+      callback(@[text]);
+    }];
   }
 
   // callback(@[[NSNull null], [[NSUserDefaults standardUserDefaults] objectForKey:@"self.url"]]);
